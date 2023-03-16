@@ -1,4 +1,4 @@
-#include <studio.h>
+#include <stdio.h>
 /**
  * main - A programme that prints the size of various computer types
  * Return: 0 (Success)
