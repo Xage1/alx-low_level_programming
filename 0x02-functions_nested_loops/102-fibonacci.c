@@ -25,7 +25,5 @@ if (count == 49)
 printf("\n");
 else
 printf(", ");
-}
-
-
 return (0);
+}
