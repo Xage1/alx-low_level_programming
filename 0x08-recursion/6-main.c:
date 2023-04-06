@@ -1,0 +1,11 @@
+n.c:12:5: error: implicit declaration of function ‘is_prime_number’; did you mean ‘_is_prime_number’? [-Werror=implicit-function-declaration]
+   12 | r = is_prime_number(1);
+      |     ^~~~~~~~~~~~~~~
+      |     _is_prime_number
+cc1: all warnings being treated as errors
+6-is_prime_number.c: In function ‘_is_prime_number’:
+6-is_prime_number.c:35:9: error: too many arguments to function ‘_is_prime_number’
+   35 | return (_is_prime_number(n, 2));
+      |         ^~~~~~~~~~~~~~~~
+6-is_prime_number.c:33:5: note: declared here
+   33 | int _is_prime_number(int n)
