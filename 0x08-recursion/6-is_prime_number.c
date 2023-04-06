@@ -9,17 +9,13 @@
 
 int is_almost_prime(int n, int i)
 {
-if (n < 2)
+if (n <= 1 || (n != i && n % i == 0))
 {
 return (0);
 }
-if (i * i > n)
+else if (n == i)
 {
-return (i);
-}
-if (n % i == 0)
-{
-return (0);
+return (1);
 }
 return (is_almost_prime(n, i + 1));
 }
