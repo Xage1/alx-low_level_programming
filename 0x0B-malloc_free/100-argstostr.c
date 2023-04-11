@@ -10,27 +10,34 @@
  */
 char *argstostr(int ac, char **av)
 {
-int total_length = 0;
-int pos = 0;
-int i;
-char *result = (char *) malloc(total_length * sizeof(char));
-{
+int i = 0, j, length = 0, l, k;
+char *result;
 if (ac == 0 || av == NULL)
 return (NULL);
 for (i = 0; i < ac; i++)
 {
-total_length += strlen(av[i]) + 1;
-}
-if (result == NULL)
-return (NULL);
-for (i = 0; i < ac; i++)
+j = 0;
+while (av[i][j] != '\0')
 {
-strcpy(result + pos, av[i]);
-pos += strlen(av[i]);
-result[pos] = '\n';
-pos++;
+j++;
 }
-result[pos] = '\0';
+length  +=  j + 1;
+}
+result = malloc(sizeof(char) * (length + 1));
+if (result == NULL)
+{
+return (NULL);
+}
+length = 0;
+for (k = 0; k < ac; k++)
+{
+for (l = 0; av[k][l] != '\0'; l++)
+{
+*(result + length) = av[k][l];
+length++;
+}
+*(result + length) = '\n';
+length++;
+}
 return (result);
-}
 }
