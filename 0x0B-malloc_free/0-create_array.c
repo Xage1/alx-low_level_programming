@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 /**
- * create_array: creates an array of chars
+ * create_array - function that creates an array of chars
  * @c: Character to initialize the array with
  * @size : The address of memory to print
  * Return: Always 0
@@ -14,15 +14,15 @@ unsigned int i;
 char *array = malloc(size * sizeof(char));
 if (size == 0)
 {
-return NULL;
+return (NULL);
 }
 if (array == NULL)
 {
-return NULL;
+return (NULL);
 }
-for ( i = 0; i < size; i++)
+for (i = 0; i < size; i++)
 {
 array[i] = c;
 }
-return array;
+return (array);
 }
