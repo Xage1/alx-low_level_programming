@@ -1,55 +1,96 @@
 #include <stdio.h>
-#include <stdarg.h>
 #include "variadic_functions.h"
+#include <stdarg.h>
 
 /**
- * print_all - A function that prints anything
- * @format: A list of types of arguments passed to the function
- * Return: Always 0
+ * op_c - Print character .
+ * @form: name va_list
+ *
+ * Return: Nothing.
  */
+
+void op_c(va_list form)
+{
+printf("%c", va_arg(form, int));
+}
+/**
+ * op_i - Print Integer
+ * @form: name va_list
+ *
+ * Return: Nothing.
+ */
+
+void op_i(va_list form)
+{
+printf("%i", va_arg(form, int));
+}
+/**
+ * op_f - print FLoat numbers
+ * @form: name of va_list
+ *
+ * Return: Nothing.
+ */
+
+void op_f(va_list form)
+{
+printf("%f", va_arg(form, double));
+}
+/**
+ * op_s -print string
+ * @form: name va_list
+ *
+ * Return: Nothing.
+ */
+
+void op_s(va_list form)
+{
+char *str;
+str = va_arg(form, char *);
+if (str == NULL)
+{
+printf("(nil)");
+return;
+}
+printf("%s", str);
+}
+
+/**
+ * print_all - check the code for Holberton School students.
+ * @format: number of arguments in character format
+ *
+ * Return: Nothing.
+ */
+
 void print_all(const char * const format, ...)
 {
-va_list args;
-unsigned int i = 0;
-char c;
-int integer;
-float f;
-char *str;
 
-va_start(args, format);
+va_list all;
+unsigned int i, j;
+char *separator = "";
+f ops[] = {
+{"c", op_c},
+{"i", op_i},
+{"f", op_f},
+{"s", op_s},
+};
+va_start(all, format);
+i = 0;
 while (format && format[i])
 {
-switch (format[i])
+j = 0;
+while (j < 4)
 {
-case 'c':
-c = va_arg(args, int);
-printf("%c", c);
+if (ops[j].op[0] == format[i])
+{
+printf("%s", separator);
+separator = ", ";
+ops[j].f(all);
 break;
-case 'i':
-integer = va_arg(args, int);
-printf("%d", integer);
-break;
-case 'f':
-f = va_arg(args, double);
-printf("%f", f);
-break;
-case 's':
-str = va_arg(args, char *);
-if (str != NULL)
-printf("%s", str);
-else
-printf("(nil)");
-break;
-default:
-break;
+}
+j++;
 }
 i++;
-if (format[i])
-{
-if (format[i] == 'c' || format[i] == 'i' || format[i] == 'f' || format[i] == 's')
-printf(", ");
-}
 }
 printf("\n");
-va_end(args);
+va_end(all);
 }
