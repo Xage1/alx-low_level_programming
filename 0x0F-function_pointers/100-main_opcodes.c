@@ -1,46 +1,35 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "function_pointers.h"
 
 /**
- * print_opcodes - Prints the opcodes of a given function
- * @num_bytes: The number of bytes of the function to print
+ * main - prints the opcodes of its own main function
+ * @argc: argument count
+ * @argv: argument vector
+ * Return: 0 on success
  */
-void print_opcodes(int num_bytes);
 
-/**
- * main - Entry point of the program
- *
- * @argc: The number of command-line arguments
- * @argv: An array of pointers to the command-line arguments
- *
- * Return: 0 if successful, 1 if incorrect arguments, 2 if negative bytes
- */
 int main(int argc, char **argv)
 {
+int i, bytes;
 if (argc != 2)
 {
 printf("Error\n");
-return (1);
+exit(1);
 }
-int num_bytes = atoi(argv[1]);
-if (num_bytes < 0)
+bytes = atoi(argv[1]);
+if (bytes < 0)
 {
 printf("Error\n");
-return (2);
+exit(2);
 }
-print_opcodes(num_bytes);
-return (0);
-}
-
-void print_opcodes(int num_bytes)
+unsigned char *opcode = (unsigned char *) main;
+for (i = 0; i < bytes; i++)
 {
-unsigned char *ptr = (unsigned char *)&main;
-int i;
-for (i = 0; i < num_bytes; i++)
-{
-printf("%02x ", *(ptr + i));
+printf("%.2x", *(opcode + i));
+if (i != bytes - 1)
+printf(" ");
 }
 printf("\n");
+return (0);
 }
 
