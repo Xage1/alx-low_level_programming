@@ -1,20 +1,22 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "function_pointers.h"
 
 /**
- * print_opcodes - prints the opcodes of its own main function
- * @num_bytes: the number of bytes of opcodes to print
+ * print_opcodes - Prints the opcodes of a given function
+ * @num_bytes: The number of bytes of the function to print
  */
 void print_opcodes(int num_bytes);
 
 /**
- * main - the main function of the program
- * @argc: the number of command-line arguments
- * @argv: an array of command-line argument strings
+ * main - Entry point of the program
  *
- * Return: 0 on success, 1 if incorrect number of arguments, or 2 if num_bytes is negative
+ * @argc: The number of command-line arguments
+ * @argv: An array of pointers to the command-line arguments
+ *
+ * Return: 0 if successful, 1 if incorrect arguments, 2 if negative bytes
  */
-int main(int argc, char *argv[])
+int main(int argc, char **argv)
 {
 if (argc != 2)
 {
@@ -37,7 +39,7 @@ unsigned char *ptr = (unsigned char *)print_opcodes;
 int i;
 for (i = 0; i < num_bytes; i++)
 {
-printf("%02x", ptr[i]);
+printf("%02x ", *(ptr + i));
 }
 printf("\n");
 }
