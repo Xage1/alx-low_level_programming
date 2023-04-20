@@ -35,7 +35,7 @@ return (0);
 
 void print_opcodes(int num_bytes)
 {
-unsigned char *ptr = (unsigned char *)print_opcodes;
+unsigned char *ptr = (unsigned char *)&main;
 int i;
 for (i = 0; i < num_bytes; i++)
 {
