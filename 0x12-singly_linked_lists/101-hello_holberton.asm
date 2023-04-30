@@ -1,17 +1,20 @@
-section .data
-message db 'Hello, Holberton', 0x0a, 0
+extern	printf;
+section .data;
+msg:db "Hello, Holberton", 0 ;
+fmt:db "%s", 10, 0;
 
-section .text
-global main
+section .text;
 
-extern printf
+global main;
 
 main:
-push message
-push qword 0
-mov rax, 0
-call printf
-add rsp, 16
-mov eax, 0
-ret
+push    rbp;
+mov	rdi,fmt
+mov	rsi,msg
+mov	rax,0;
+call    printf;
 
+pop	rbp;
+
+mov	rax,0;
+ret;

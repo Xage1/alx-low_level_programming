@@ -2,7 +2,7 @@
 #include "lists.h"
 
 /**
- * __attribute__((constructor)) print_chat - prints a message 
+ * __attribute__((constructor)) print_chat - prints a message
  * Return: Void
  */
 
