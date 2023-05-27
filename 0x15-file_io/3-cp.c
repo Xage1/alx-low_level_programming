@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <sys/types.h>
+#include <sys/stat.h>
 #include "main.h"
 
 #define BUF_SIZE 1024
@@ -26,10 +28,13 @@ exit(code);
  * Return: Always 0.
  */
 
-int main(int argc, char **argv)
+int main(int argc, char *argv[])
 {
 int fd_from, fd_to, bytes_read, bytes_written;
 char buffer[BUF_SIZE];
+struct stat st;
+mode_t file_perms = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH;
+
 
 if (argc != 3)
 error_exit("Usage: cp file_from file_to", 97);
@@ -38,8 +43,14 @@ fd_from = open(argv[1], O_RDONLY);
 if (fd_from == -1)
 error_exit("Error: Can't read from file", 98);
 
-fd_to = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0644);
+if (stat(argv[1], &st) == -1)
+error_exit("Error: Can't read from file", 98);
+
+fd_to = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, file_perms);
 if (fd_to == -1)
+error_exit("Error: Can't write to file", 99);
+
+if (chmod(argv[2], st.st_mode & 0777) == -1)
 error_exit("Error: Can't write to file", 99);
 
 while ((bytes_read = read(fd_from, buffer, BUF_SIZE)) > 0)
