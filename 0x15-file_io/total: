@@ -1,0 +1,4 @@
+der.c:7: warning: no description found for function display_error
+100-elf_header.c:13: warning: no description found for function display_elf_header
+100-elf_header.c:77: warning: no description found for function main
+root@5f524344959e:~/alx-low_level_programming/0x15-file_io# 
