@@ -1,7 +1,7 @@
 #include "lists.h"
 
 /**
- * insert_nodeint_at_index - Inserts a new node at a given position in the list.
+ * insert_nodeint_at_index - Inserts a new node at a given position in the list
  * @head: Pointer to a pointer to the head of the list.
  * @idx: The index where the new node should be inserted.
  * @n: The value to be stored in the new node.
@@ -45,5 +45,5 @@ count++;
 }
 
 free(new_node);
-return NULL;
+return (NULL);
 }

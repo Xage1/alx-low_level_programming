@@ -2,7 +2,7 @@
 
 
 /**
- * delete_nodeint_at_index - Deletes the node at index index of a listint_t linked list.
+ * delete_nodeint_at_index - Deletes the node at index index of a listint_t
  * @head: Double pointer to the head of the linked list.
  * @index: Index of the node to be deleted. Index starts at 0.
  *
@@ -37,7 +37,7 @@ current = current->next;
 count++;
 }
 
-if (current == NULL || current ->next == NULL)
+if (current == NULL || current->next == NULL)
 return (-1);
 
 
