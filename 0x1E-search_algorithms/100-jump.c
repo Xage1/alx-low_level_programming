@@ -12,7 +12,7 @@
  */
 size_t min(size_t a, size_t b)
 {
-    return (a < b) ? a : b;
+return ((a < b) ? a : b);
 }
 
 /**
@@ -25,42 +25,42 @@ size_t min(size_t a, size_t b)
  */
 int jump_search(int *array, size_t size, int value)
 {
-    size_t step;
-    size_t prev = 0;
+size_t step;
+size_t prev = 0;
 
-    if (array == NULL || size == 0)
-        return -1;
+if (array == NULL || size == 0)
+return (-1);
 
-    step = sqrt(size);
+step = sqrt(size);
 
-    printf("Value checked array[%lu] = [%d]\n", prev, array[prev]);
-    while (array[min(step, size) - 1] < value)
-    {
-        prev = step;
-        step += sqrt(size);
-        if (prev >= size)
-        {
-            printf("Value found between indexes [%lu] and [%lu]\n", prev - step, prev - 1);
-            return -1;
-        }
-        printf("Value checked array[%lu] = [%d]\n", prev, array[prev]);
-    }
+printf("Value checked array[%lu] = [%d]\n", prev, array[prev]);
+while (array[min(step, size) - 1] < value)
+{
+prev = step;
+step += sqrt(size);
+if (prev >= size)
+{
+printf("Value found between indexes [%lu] and [%lu]\n", prev - step, prev - 1);
+return (-1);
+}
+printf("Value checked array[%lu] = [%d]\n", prev, array[prev]);
+}
 
-    while (array[prev] < value)
-    {
-        printf("Value checked array[%lu] = [%d]\n", prev, array[prev]);
-        prev++;
-        if (prev == min(step, size))
-            break;
-    }
+while (array[prev] < value)
+{
+printf("Value checked array[%lu] = [%d]\n", prev, array[prev]);
+prev++;
+if (prev == min(step, size))
+break;
+}
 
-    if (array[prev] == value)
-    {
-        printf("Value checked array[%lu] = [%d]\n", prev, array[prev]);
-        return (int)prev;
-    }
+if (array[prev] == value)
+{
+printf("Value checked array[%lu] = [%d]\n", prev, array[prev]);
+return ((int)prev);
+}
 
-    printf("Value checked array[%lu] = [%d]\n", prev, array[prev]);
-    printf("Value found between indexes [%lu] and [%lu]\n", prev - 1, prev);
-    return -1;
+printf("Value checked array[%lu] = [%d]\n", prev, array[prev]);
+printf("Value found between indexes [%lu] and [%lu]\n", prev - 1, prev);
+return (-1);
 }
